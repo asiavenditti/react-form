@@ -1,35 +1,55 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const tec_items = [
+    "Smartphone",
+    "Laptop",
+    "Cuffie Bluetooth",
+    "Smartwatch",
+    "Monitor",
+    "Mouse",
+    "Tablet",
+    "Hard Disk",
+    "Tastiera",
+    "Webcam",
+    "Speaker Bluetooth",
+    "Router Wi-Fi",
+    "Chiavetta USB",
+    "Caricatore Wireless",
+    "Power Bank",
+    "Stampante",
+    "Smart TV",
+    "Drone",
+    "Console di gioco",
+    "Microfono"
+  ];
+
+
+  const [tasks, setTasks] = useState(tec_items)
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+
+      <div className="container mt-2 p-4">
+
+        <h1 className="mb-4 text-primary text-center">Articoli Tecnologici</h1>
+        <ul className="list-group shadow-sm">
+          {tasks.map((task, index) => {
+            return (
+              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">{task}</li>
+            )
+          })}
+
+        </ul>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
+
   )
+
+
 }
 
 export default App
