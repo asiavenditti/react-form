@@ -28,11 +28,18 @@ function App() {
 
 
   const [tasks, setTasks] = useState(tec_items)
+  const [newTask, setNewTask] = useState('')
 
+
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log(newTask);
+    setTasks([newTask, ...tasks]);
+  }
 
   return (
     <>
-
       <div className="container mt-2 p-4">
 
         <h1 className="mb-4 text-primary text-center">Articoli Tecnologici</h1>
@@ -44,9 +51,16 @@ function App() {
           })}
 
         </ul>
+        <form onSubmit={handleSubmit}>
+          <div className='d-flex'>
+            <input className='form-control mt-2' placeholder='Inserisci un nuovo articolo' type='text' value={newTask} onChange={e => setNewTask(e.target.value)} />
+            <button type='submit' className='btn'>
+              <i class="bi bi-save fs-3"></i>
+            </button>
+          </div>
+        </form>
       </div>
     </>
-
   )
 
 
