@@ -38,6 +38,17 @@ function App() {
     setTasks([newTask, ...tasks]);
   }
 
+
+  function handleDelete(i) {
+    const updateTasks = tasks.filter((task, index) => {
+      return index !== i
+    })
+    setTasks(updateTasks)
+    console.log(updateTasks);
+
+  }
+
+
   return (
     <>
       <div className="container mt-2 p-4">
@@ -46,7 +57,10 @@ function App() {
         <ul className="list-group shadow-sm">
           {tasks.map((task, index) => {
             return (
-              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">{task}</li>
+              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
+                {task}
+                <i className='bi bi-trash' onClick={() => handleDelete(index)}></i>
+              </li>
             )
           })}
 
@@ -55,7 +69,7 @@ function App() {
           <div className='d-flex'>
             <input className='form-control mt-2' placeholder='Inserisci un nuovo articolo' type='text' value={newTask} onChange={e => setNewTask(e.target.value)} />
             <button type='submit' className='btn'>
-              <i class="bi bi-save fs-3"></i>
+              <i className="bi bi-save fs-3"></i>
             </button>
           </div>
         </form>
